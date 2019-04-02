@@ -1,0 +1,8 @@
+SyncOn: Yes
+Timestamp: timestamp
+ReadAndWrite: sure
+
+Start of file
+blah
+blah
+blah
