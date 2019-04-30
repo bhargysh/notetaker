@@ -5,12 +5,9 @@ class TagFinder
 
     def find(tag)
         list_of_files = []
-        Dir.foreach(@directory) do |filename|
-            if File.extname(filename) == '.txt'
-                path = File.join(@directory, filename)
-                if Notefile.new(path).tags.has_key?(tag)
-                    list_of_files.append(File.basename(filename, ".txt"))
-                end
+        FileFinder.new(@directory).find do |path|
+            if Notefile.new(path).tags.has_key?(tag)
+                list_of_files.append(File.basename(path, ".txt"))
             end
         end
         list_of_files
