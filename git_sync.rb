@@ -4,7 +4,7 @@ class GitSync
         @directory = directory
     end
 
-    def sync
+    def sync(paths)
         git = Git.open(@directory)
         FileFinder.new(@directory).find do |path|
             git.add(path)

@@ -1,9 +1,9 @@
 require 'clamp'
 
 class Notefile
-    attr_reader :tags
-    def initialize(filename)
-        tags = IO.readlines(filename).take_while { |line|
+    attr_reader :tags, :path, :name
+    def initialize(path)
+        tags = IO.readlines(path).take_while { |line|
             line.chomp!
             !line.empty?
         }.map { |tag| 
@@ -16,5 +16,7 @@ class Notefile
             end
         }.compact
         @tags = Hash[tags]
+        @path = path
+        @name = File.basename(path, ".txt")
     end
 end

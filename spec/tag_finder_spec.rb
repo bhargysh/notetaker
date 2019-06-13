@@ -6,8 +6,14 @@ RSpec.describe(TagFinder) do
     context 'when tag is searched for' do
         let(:tag) { :ReadAndWrite }
         let(:list_of_files) { ['fixture_file'] }
-        it 'returns a list of filenames' do
-            expect(subject.find(tag)).to eq(list_of_files)
+        it 'returns a list of names' do
+            expect(subject.find(tag).map(&:name)).to eq(list_of_files)
+        end
+    end
+    context 'when tag is not found' do
+        let(:tag) { :FunTimes }
+        it 'returns empty list' do
+            expect(subject.find(tag)).to be_empty 
         end
     end
 end
