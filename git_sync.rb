@@ -6,9 +6,7 @@ class GitSync
 
     def sync(paths)
         git = Git.open(@directory)
-        FileFinder.new(@directory).find do |path|
-            git.add(path)
-        end 
+        paths.each { |path| git.add(path) }
         new_tree_id = git.write_tree
         if new_tree_id != tree_sha(git)
             git.commit('Sync')
