@@ -1,3 +1,4 @@
+require 'git'
 require_relative 'file_finder'
 class GitSync
     def initialize(directory)

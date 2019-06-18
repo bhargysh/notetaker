@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'clamp'
 require_relative 'tag_finder'
+require_relative 'git_sync'
 
 Clamp do
     class MainCommand < Clamp::Command
@@ -26,5 +27,3 @@ Clamp do
     subcommand "find", "Finds tags within the directory", TagFinderCommand
     subcommand "sync", "Finds files that need to be synced to git", SyncFinderCommand
 end
-
-#implement git sync
